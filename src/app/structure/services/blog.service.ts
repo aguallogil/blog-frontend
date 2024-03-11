@@ -18,4 +18,10 @@ export class BlogService {
   getAll(): Observable<any> {
     return this.http.get(`${this.apiUrl}blog`);
   }
+  searchBlogEntries(searchQuery: string) {
+    return this.http.get<any[]>(`${this.apiUrl}blog/search`, {
+      params: { search: searchQuery }
+    });
+  }
+  
 }

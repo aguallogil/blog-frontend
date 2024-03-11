@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div class="relative">
+    <!-- Indicador de carga -->
+    <div class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50" *ngIf="isLoading()">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  

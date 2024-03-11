@@ -9,6 +9,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BlogEntriesComponent, SafeHtmlPipe } from './structure/components/blog-entries/blog-entries.component';
 import { BlogComponent } from './structure/components/blog/blog.component';
 import { AuthInterceptor } from './structure/interceptors/auth.interceptor';
+import { LoadingService } from './structure/services/loading.service';
+import { LoadingInterceptor } from './structure/interceptors/loading.interceptor';
 
 @NgModule({
     declarations: [
@@ -26,6 +28,12 @@ import { AuthInterceptor } from './structure/interceptors/auth.interceptor';
         AppRoutingModule
     ],
     providers: [
+        LoadingService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LoadingInterceptor,
+            multi: true
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
